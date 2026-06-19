@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darionmoal.github.io/cns-c7app-com/sitemap.xml

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>c7c7.app · 稳定入口与使用说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f4f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Noto Sans SC", sans-serif;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 卡片通用式 */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e2e6ed;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.01);
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
+    }
+
+    /* hero 区 */
+    .hero {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 48px 28px 40px;
+      border-radius: 24px;
+      border: 1px solid #e2e6ed;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+      margin-bottom: 32px;
+    }
+
+    .hero-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: #eef1f5;
+      border-radius: 24px;
+      margin-bottom: 20px;
+      font-size: 34px;
+      color: #2b3d4f;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: #0f1b29;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #3d4e62;
+      max-width: 660px;
+      margin: 0 auto 20px;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      background: #e6ecf3;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #1f3348;
+      letter-spacing: 0.3px;
+    }
+
+    /* 网格 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 24px 18px;
+      }
+    }
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: #142433;
+      border-left: 4px solid #9aaec4;
+      padding-left: 12px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: #1f364c;
+    }
+
+    .card ul, .card p {
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      list-style-type: disc;
+      color: #2b4055;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    .inline-link {
+      color: #1a5a8c;
+      text-decoration: none;
+      border-bottom: 1px dashed #b6c8db;
+      font-weight: 500;
+      transition: border-color 0.15s;
+    }
+
+    .inline-link:hover {
+      border-bottom: 1px solid #1a5a8c;
+    }
+
+    .faq-item {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e9edf2;
+    }
+
+    .faq-item:first-of-type {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #1d3045;
+    }
+
+    .faq-a {
+      color: #3a4f66;
+      font-size: 0.96rem;
+    }
+
+    .bottom-links {
+      text-align: center;
+      padding: 20px 0 4px;
+      color: #4a627b;
+      font-size: 0.96rem;
+      border-top: 1px solid #e0e5ec;
+      margin-top: 16px;
+    }
+
+    .link-list a {
+      display: inline-block;
+      margin: 0 8px 8px;
+      color: #1a5a8c;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .link-list a:hover {
+      border-bottom: 1px solid #1a5a8c;
+    }
+
+    .small-note {
+      font-size: 0.9rem;
+      color: #60778e;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 区 -->
+  <div class="hero">
+    <div class="hero-icon">⛅</div>
+    <h1>日常用得上的入口</h1>
+    <p>关于 <strong>c7c7.app</strong> 的页面说明、功能概览与常见疑问摘要。<br>一个偏向安静、稳定、可随时参考的小地方。</p>
+    <div class="hero-tagline">轻量 · 透明 · 保持更新</div>
+  </div>
+
+  <!-- 优势区 + 说明区 两列 -->
+  <div class="grid-2">
+
+    <!-- 优势/特点卡片 -->
+    <div class="card">
+      <h2>▎几个特点</h2>
+      <ul>
+        <li>页面结构简洁，加载速度较快，没有多余干扰元素。</li>
+        <li>长期维护，资源指向稳定，适合作为日常参考书签。</li>
+        <li>提供直观的说明与引导，降低初次使用的理解成本。</li>
+        <li>设计上保持克制，注重信息清晰度与浏览体验。</li>
+      </ul>
+      <h3>适用场景举例</h3>
+      <p>当你需要重复使用一个固定的页面入口，或者希望快速确认最新结构时，<a href="https://cns-c7app.com" class="inline-link">c7c7.app</a> 可以作为一个轻量的起点。不需要每次临时搜索，也省去记忆复杂地址的麻烦。</p>
+    </div>
+
+    <!-- 页面说明卡片 -->
+    <div class="card">
+      <h2>▎页面说明</h2>
+      <p>这里不是功能堆积的仪表盘，而是一个围绕 <strong>c7c7.app</strong> 整理的介绍页。内容包括：</p>
+      <ul>
+        <li><strong>基础介绍</strong> —— 明确该站点的定位与主要内容方向。</li>
+        <li><strong>特点与使用提示</strong> —— 帮你快速判断是否适合自己。</li>
+        <li><strong>常见疑问摘要</strong> —— 把一些反复出现的问题提前放在这里。</li>
+      </ul>
+      <p>页面本身不收集任何个人信息，也不嵌入第三方跟踪脚本。你可以随时打开、关闭，没有任何额外的负担。</p>
+      <div class="small-note">最后更新时间：2025年 · 春季</div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要卡片 (独立) -->
+  <div class="card">
+    <h2>▎FAQ 摘要</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">问：这个页面和 cns-c7app.com 是什么关系？</div>
+      <div class="faq-a">这是一个介绍性质的落地页，内容指向 <a href="https://cns-c7app.com" class="inline-link">c7c7.app</a>，帮助你了解它的功能与使用方式。你可以把它看作是一份轻量说明，而非网站本身。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">问：需要注册或登录才能使用吗？</div>
+      <div class="faq-a">不需要。这个页面是公开的，不涉及账户体系。至于所指向的页面是否需要登录，以实际页面提示为准，但本介绍页不涉及任何认证流程。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">问：内容多久更新一次？</div>
+      <div class="faq-a">当底层页面结构或功能发生明显变化时，会同步更新介绍内容。日常保持稳定，不会频繁变动。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">问：移动端浏览体验如何？</div>
+      <div class="faq-a">页面采用响应式设计，在手机、平板和桌面端都可以获得一致的阅读体验。卡片宽度和间距会自适应屏幕大小。</div>
+    </div>
+
+    <div class="small-note" style="margin-top:16px;">* 如果你有其他疑问，可以通过常见渠道反馈，我们会定期整理并补充。</div>
+  </div>
+
+  <!-- 底部链接 + 调用 c7c7.app 自然出现 -->
+  <div class="bottom-links">
+    <div class="link-list">
+      <a href="https://cns-c7app.com">c7c7.app</a>
+      <span style="color:#b3c2d2;">·</span>
+      <a href="https://cns-c7app.com" style="border-bottom:1px solid #b3c2d2;">c7c7.app</a>
+      <span style="color:#b3c2d2;">·</span>
+      <span>（稳定入口）</span>
+    </div>
+    <p style="margin-top:12px;">
+      本页仅做信息说明，不构成任何承诺。所有操作请以实际页面为准。
+    </p>
+    <p style="margin-top:4px; color:#6e87a0;">
+      你可以将 <a href="https://cns-c7app.com" class="inline-link">c7c7.app</a> 加入浏览器书签，方便随时查阅。
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
